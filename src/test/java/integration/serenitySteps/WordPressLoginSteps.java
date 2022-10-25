@@ -1,26 +1,22 @@
 package integration.serenitySteps;
 
 import integration.pages.WordPressLoginPage;
-import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.ScenarioSteps;
+import net.thucydides.core.pages.PageObject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WordPressLoginSteps extends ScenarioSteps {
+public class WordPressLoginSteps extends PageObject {
     WordPressLoginPage loginPage;
 
-    @Step
-    public void loginPageInvalidDataInput() {
+    public final void loginPageInvalidDataInput() {
         loginPage.gotoWPLoginPage();
     }
 
-    @Step
-    public void enterLoginData() {
+    public final void enterLoginData() {
         loginPage.enterInvalidEmailIdWPLoginPage();
     }
 
-    @Step
-    public void checkErrorMessage() {
+    public final void checkErrorMessage() {
         assertThat(loginPage.isErrorMessageShownWPLoginPage()).isTrue();
     }
 

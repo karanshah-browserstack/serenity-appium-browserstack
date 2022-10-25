@@ -9,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
+
 public class WordPressLoginPage extends MobilePageObject {
 
     @AndroidFindBy(id = "org.wordpress.android:id/continue_with_wpcom_button")
@@ -53,7 +56,7 @@ public class WordPressLoginPage extends MobilePageObject {
 
 
     public void gotoLoginPage() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(60));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.flipkart.android:id/btn_mlogin")));
         element(existingUsersignIn).click();
     }
@@ -65,7 +68,7 @@ public class WordPressLoginPage extends MobilePageObject {
     }
 
     public boolean isErrorMessageShown() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(60));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.flipkart.android:id/pageLevelError")));
         return element(error_text).getText().contentEquals("Invalid login details");
     }
