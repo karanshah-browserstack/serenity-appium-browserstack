@@ -33,22 +33,21 @@ public class BrowserStackSerenityDriver implements DriverSource {
                     || key.equals("browserstack.server")) {
                 continue;
             } else if (key.startsWith("bstack_")) {
-                if (key.equalsIgnoreCase("bstack_app")) {
+                if (key.equalsIgnoreCase("bstack_app") || key.equalsIgnoreCase("bstack_deviceName")) {
                     capabilities.setCapability(key.replace("bstack_", ""), environmentVariables.getProperty(key));
                 } else {
                     bStackOptionsMap.put(key.replace("bstack_", ""), environmentVariables.getProperty(key));
                 }
             } else if (environment != null && key.startsWith("environment." + environment)) {
-                if (key.equalsIgnoreCase("environment." + environment + ".app")) {
+                if (key.equalsIgnoreCase("environment." + environment + ".app") || key.equalsIgnoreCase("environment." + environment + ".deviceName")) {
                     capabilities.setCapability(key.replace("environment." + environment + ".", ""),
                             environmentVariables.getProperty(key));
                 } else {
                     bStackOptionsMap.put(key.replace("environment." + environment + ".", ""), environmentVariables.getProperty(key));
                 }
-                capabilities.setCapability(key.replace("environment." + environment + ".", ""),
-                        environmentVariables.getProperty(key));
             }
         }
+        capabilities.setCapability("bstack:options", bStackOptionsMap);
         try {
             AndroidDriver driver = new AndroidDriver(new URL("https://" + username + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub"), capabilities);
             return driver;
