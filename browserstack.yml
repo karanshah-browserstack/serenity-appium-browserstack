@@ -69,4 +69,4 @@ debug: false # <boolean> # Set to true if you need screenshots for every seleniu
 networkLogs: false # <boolean> Set to true to enable HAR logs capturing
 consoleLogs: errors # <string> Remote browser's console debug levels to be printed (Default: errors)
 # Available options are `disable`, `errors`, `warnings`, `info`, `verbose` (Default: errors)
-app: bs://709742b3ed85c82bf3c802b76523c40a8747cd29
+app: bs://89ac6069ba526418aa1b720e42d1583ec86c428a
